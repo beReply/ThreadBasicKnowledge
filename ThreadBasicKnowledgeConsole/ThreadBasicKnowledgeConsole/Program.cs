@@ -6,9 +6,10 @@ namespace ThreadBasicKnowledgeConsole
     {
         static void Main(string[] args)
         {
-            var threadSync = new ThreadSync();
-            threadSync.MainThread();
+            var joinAndSleep = new JoinAndSleep();
+            joinAndSleep.MainThread();
 
+            Console.WriteLine("\n运行完成");
             Console.ReadLine();
         }
     }

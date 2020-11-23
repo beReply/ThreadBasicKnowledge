@@ -7,14 +7,14 @@ namespace ThreadBasicKnowledgeConsole
 {
     public class ThreadSync
     {
-        private static readonly Semaphore _semaphore = new Semaphore(0,1);
+        private static readonly Semaphore SemaphoreOne = new Semaphore(0,1);
 
         public void MainThread()
         {
-            _semaphore.Release(1);
+            SemaphoreOne.Release(1);
             for (int i = 0; i < 10; i++)
             {
-                _semaphore.WaitOne();
+                SemaphoreOne.WaitOne();
                 var thread = new Thread(WriteMessage);
                 thread.Start(i);
             }
@@ -24,7 +24,7 @@ namespace ThreadBasicKnowledgeConsole
         public void WriteMessage(object i)
         {
             Console.WriteLine(i.ToString());
-            _semaphore.Release(1);
+            SemaphoreOne.Release(1);
         }
     }
 }
